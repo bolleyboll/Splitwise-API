@@ -28,5 +28,10 @@ public class UserServiceImpl implements UserService{
 	public User login(String email, String password) {
 		return ur.findByEmailAndPassword(email, password);
 	}
+
+	@Override
+	public String userGroups(String username) {
+		return ur.findByUsername(username).getGroups();
+	}
 	
 }

@@ -24,9 +24,9 @@ public class Group {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer groupId;
 
-	@Column(name = "name", length = 20, nullable = false)
+	@Column(name = "name", length = 200, nullable = false)
 	private String name;
 
-	@Column(name = "member", length = 10000, nullable = false)
-	private String member;
+	@Column(name = "members", length = 100000)
+	private String members;
 }
