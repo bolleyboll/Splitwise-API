@@ -28,5 +28,5 @@ public class Group {
 	private String name;
 
 	@Column(name = "member", length = 10000, nullable = false)
-	private String memeber;
+	private String member;
 }
