@@ -23,5 +23,10 @@ public class UserServiceImpl implements UserService{
 	public void delUser(String username) {
 		ur.deleteById(username);
 	}
+
+	@Override
+	public User login(String email, String password) {
+		return ur.findByEmailAndPassword(email, password);
+	}
 	
 }
