@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,22 +17,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "expenses")
 public class Expense {
-
 	@Id
 	@Column(name = "expenseId", unique = true, nullable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer expenseId;
 
-	@Column(name = "expenseName", length = 50, nullable = false)
-	private String expenseName;
+	@Column(name = "name", length = 200, nullable = false)
+	private String name;
 
-	@Column(name = "expenseAmount", length = 50, nullable = false)
-	private Double expenseAmount;
+	@Column(name = "amount")
+	private Double amount;
 
-	@JoinColumn(name = "groupId")
-	@ManyToOne
-	private Group group;
+	@Column(name = "inGroup", length = 50)
+	private String inGroup;
 
-	@Column(name = "split", length = 50, nullable = false)
-	private String split;
+	@Column(name = "spliting", length = 1000)
+	private String spliting;
 }

@@ -1,5 +1,7 @@
 package org.iiitb.splitwise.services.impl;
 
+import java.util.List;
+
 import org.iiitb.splitwise.model.User;
 import org.iiitb.splitwise.repositories.UserRepository;
 import org.iiitb.splitwise.services.UserService;
@@ -30,8 +32,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public String userGroups(String username) {
-		return ur.findByUsername(username).getGroups();
+	public String[] userGroups(String username) {
+		return ur.findByUsername(username).getGroups().split(", ");
 	}
 	
 }

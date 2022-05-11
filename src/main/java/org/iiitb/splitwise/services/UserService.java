@@ -12,5 +12,5 @@ public interface UserService {
 
 	User login(String email, String password);
 
-	String userGroups(String username);
+	String[] userGroups(String username);
 }
