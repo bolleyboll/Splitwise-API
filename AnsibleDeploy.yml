@@ -15,4 +15,4 @@
       docker_image:
         name: patro30/backend
     - name: Run docker compose
-      shell: docker-compose -f home/patro/deployments/docker-compose.yml up -d
+      shell: docker-compose -f /home/patro/deployments/docker-compose.yml up -d
