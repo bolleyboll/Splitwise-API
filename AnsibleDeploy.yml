@@ -5,7 +5,7 @@
     - name: Copy docker compose file to host
       copy:
         src: docker-compose.yml
-        dest: /home/deployments/docker-compose.yml
+        dest: /home/patro/deployments/docker-compose.yml
     - name: Remove already existing image
       docker_image: 
         name: patro30/backend
@@ -15,4 +15,4 @@
       docker_image:
         name: patro30/backend
     - name: Run docker compose
-      shell: docker-compose -f home/deployments/docker-compose.yml up -d
+      shell: docker-compose -f home/patro/deployments/docker-compose.yml up -d
