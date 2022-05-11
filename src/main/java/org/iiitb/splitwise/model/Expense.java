@@ -31,6 +31,6 @@ public class Expense {
 	@Column(name = "forGroup", length = 50)
 	private String forGroup;
 
-	@Column(name = "splitBetween", length = 1000)
+	@Column(name = "splitBetween", length = 10000)
 	private String splitBetween;
 }
