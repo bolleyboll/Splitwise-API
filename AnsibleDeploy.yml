@@ -15,6 +15,6 @@
       docker_image:
         name: patro30/backend
     - name: Stop already running docker compose
-      shell: docker-compose -f //home/patro/deployments/docker-compose.yml down
+      shell: docker-compose -f /home/patro/deployments/docker-compose.yml down
     - name: Run docker compose
       shell: docker-compose -f /home/patro/deployments/docker-compose.yml up -d

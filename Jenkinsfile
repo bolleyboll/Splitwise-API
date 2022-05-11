@@ -1,32 +1,41 @@
 pipeline {
+    environment{
+        imageName = ""
+    }
     agent any
 
     stages {
-        stage('git pull') {
+        stage('Git Pull') {
             steps {
-                git branch: 'main', url: 'https://github.com/bolleyboll/Splitwise-API.git'
+                git branch: 'main', credentialsId: 'git-credentials', url: 'https://github.com/bolleyboll/Splitwise-API.git'
             }
         }
-        stage('mvn build') {
+        stage('Maven Build') {
             steps {
                 script{
-                    sh 'mvn clean install pacakge'
+                    sh 'mvn clean install'
                 }
             }
         }
-        stage('Docker Image Generation & Upload to DockerHub') {
+        stage('Docker Image Build') {
             steps {
                 script{
-                    img = docker.build "freshlyjuiced/splitwise-api:latest"
-                    docker.withRegistry('', 'cred-docker'){
-                        img.push()
+                    imageName = docker.build "patro30/backend:latest"
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                script{
+                    docker.withRegistry('', 'docker-jenkins'){
+                        imageName.push()
                     }
                 }
             }
         }
-        stage('Ansible pull Docker Image') {
+        stage('Ansible Pull Docker Image') {
             steps {
-                ansiblePlaybook becomeUser: null, colorized: true, credentialsId: 'cred-ssh', installation: 'Ansible', inventory: 'ansible/inventory.txt', playbook: 'ansible/playbook.yml', sudoUser: null
+                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'AnsibleDeploy.yml', sudoUser: null
             }
         }
     }
