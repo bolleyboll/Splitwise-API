@@ -1,7 +1,9 @@
 package org.iiitb.splitwise.startup;
 
+import org.iiitb.splitwise.model.Expense;
 import org.iiitb.splitwise.model.Group;
 import org.iiitb.splitwise.model.User;
+import org.iiitb.splitwise.repositories.ExpenseRepository;
 import org.iiitb.splitwise.repositories.GroupRepository;
 import org.iiitb.splitwise.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +19,13 @@ public class Start {
 
 	@Autowired
 	private GroupRepository gr;
-	
+
+	@Autowired
+	private ExpenseRepository er;
+
 	@EventListener(ContextRefreshedEvent.class)
 	public void bootUp() {
 		System.out.println("Startup Starts");
-
-		Group g0 = new Group();
-		g0.setGroupId(1);
-		g0.setName("Roommates - Bangalore");
-		g0.setMembers("bolleyboll, red, chief");
-		gr.save(g0);
-
-		Group g1 = new Group();
-		g1.setGroupId(2);
-		g1.setName("Google IO");
-		g1.setMembers("bolleyboll, amang, chief");
-		gr.save(g1);
-
-		Group g2 = new Group();
-		g2.setGroupId(3);
-		g2.setName("Wonderla");
-		g2.setMembers("bolleyboll, amang, red, chief");
-		gr.save(g2);
 
 		User u0 = new User();
 		u0.setEmail("aman.gupta@iiitb.ac.in");
@@ -75,6 +62,64 @@ public class Start {
 		u3.setName("Master Chief");
 		u3.setGroups("1, 2, 3");
 		ur.save(u3);
+
+		Group g0 = new Group();
+		g0.setGroupId(1);
+		g0.setName("Roommates - Bangalore");
+		g0.setMembers("bolleyboll, red, chief");
+		gr.save(g0);
+
+		Group g1 = new Group();
+		g1.setGroupId(2);
+		g1.setName("Google IO");
+		g1.setMembers("bolleyboll, amang, chief");
+		gr.save(g1);
+
+		Group g2 = new Group();
+		g2.setGroupId(3);
+		g2.setName("Wonderla");
+		g2.setMembers("bolleyboll, amang, red, chief");
+		gr.save(g2);
+
+		Expense e0 = new Expense();
+		e0.setExpenseId(1);
+		e0.setName("Samosa");
+		e0.setAmount(50.0);
+		e0.setForGroup("2");
+		e0.setSplitBetween(g1.getMembers());
+		er.save(e0);
+
+		Expense e1 = new Expense();
+		e1.setExpenseId(2);
+		e1.setName("Bus");
+		e1.setAmount(150.0);
+		e1.setForGroup("2");
+		e1.setSplitBetween(g1.getMembers());
+		er.save(e1);
+
+		Expense e2 = new Expense();
+		e2.setExpenseId(3);
+		e2.setName("Lunch");
+		e2.setAmount(2500.0);
+		e2.setForGroup("2");
+		e2.setSplitBetween("bolleyboll, amang");
+		er.save(e2);
+
+		Expense e3 = new Expense();
+		e3.setExpenseId(4);
+		e3.setName("Cab");
+		e3.setAmount(150.0);
+		e3.setForGroup("2");
+		e3.setSplitBetween(g1.getMembers());
+		er.save(e3);
+
+		Expense e4 = new Expense();
+		e4.setExpenseId(5);
+		e4.setName("Sandwich");
+		e4.setAmount(150.0);
+		e4.setForGroup("2");
+		e4.setSplitBetween("red, chief");
+		er.save(e4);
 
 		System.out.println("Startup End");
 
