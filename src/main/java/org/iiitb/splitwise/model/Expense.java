@@ -28,9 +28,9 @@ public class Expense {
 	@Column(name = "amount")
 	private Double amount;
 
-	@Column(name = "inGroup", length = 50)
-	private String inGroup;
+	@Column(name = "forGroup", length = 50)
+	private String forGroup;
 
-	@Column(name = "spliting", length = 1000)
-	private String spliting;
+	@Column(name = "splitBetween", length = 1000)
+	private String splitBetween;
 }
