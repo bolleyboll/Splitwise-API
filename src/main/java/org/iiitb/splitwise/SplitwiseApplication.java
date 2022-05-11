@@ -11,7 +11,6 @@ public class SplitwiseApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SplitwiseApplication.class, args);
-		log.info("Simple log statement with inputs {}, {} and {}", 1, 2, 3);
+		log.info("Application Started");
 	}
-
 }
