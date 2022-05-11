@@ -2,6 +2,7 @@ package org.iiitb.splitwise.controller;
 
 import java.util.List;
 
+import org.iiitb.splitwise.model.Expense;
 import org.iiitb.splitwise.model.Group;
 import org.iiitb.splitwise.services.GroupService;
 import org.iiitb.splitwise.services.UserService;
@@ -32,8 +33,13 @@ public class GroupController {
 	}
 
 	@PostMapping("create")
-	public ResponseEntity<String> createGroup(@RequestBody Group group){
+	public ResponseEntity<String> createGroup(@RequestBody Group group) {
 		return ResponseEntity.ok(gs.createGroup(group).getName());
 	}
-	
+
+	@GetMapping("expenses/{id}")
+	public ResponseEntity<List<Expense>> groupExpenses(@PathVariable String id){
+		return ResponseEntity.ok(gs.groupExpenses(id));
+	}
+
 }
