@@ -2,8 +2,10 @@
 - name: Deploy Splitwise app
   hosts: all
   tasks: 
-    - name: Stopping already running compose
-      shell: docker-compose down
+    - name: Copy docker compose file to host
+      copy:
+        src: docker-compose.yml
+        dest: /home/docker-compose.yml
     - name: Remove already existing image
       docker_image: 
         name: patro30/backend
@@ -12,9 +14,5 @@
     - name: Pull updated image
       docker_image:
         name: patro30/backend
-    - name: Copy docker compose file to host
-      copy:
-        src: ./docker-compose.yml
-        dest: ~/
     - name: Run docker compose
-      shell: docker-compose up
+      shell: docker-compose up -d
