@@ -51,4 +51,9 @@ public class AppController {
 		}
 		return ResponseEntity.ok(null);
 	}
+
+	@GetMapping("users")
+	public ResponseEntity<List<User>> allUsers() {
+		return ResponseEntity.ok(us.allUsers());
+	}
 }

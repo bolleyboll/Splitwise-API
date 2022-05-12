@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class GroupServiceImpl implements GroupService{
+public class GroupServiceImpl implements GroupService {
 
 	@Autowired
 	private UserRepository ur;
@@ -44,5 +44,12 @@ public class GroupServiceImpl implements GroupService{
 	public List<Expense> groupExpenses(String id) {
 		return er.findByForGroup(id);
 	}
-	
+
+	@Override
+	public Group addUserToGroup(String username, Integer grpId) {
+		Group g = gr.findByGroupId(grpId);
+		g.setMembers(g.getMembers() + ", " + username);
+		return gr.save(g);
+	}
+
 }

@@ -11,4 +11,6 @@ public interface GroupService {
 	Group createGroup(Group group);
 
 	List<Expense> groupExpenses(String id);
+
+	Group addUserToGroup(String username, Integer grpId);
 }

@@ -35,5 +35,10 @@ public class UserServiceImpl implements UserService{
 	public String[] userGroups(String username) {
 		return ur.findByUsername(username).getGroups().split(", ");
 	}
+
+	@Override
+	public List<User> allUsers() {
+		return ur.findAll();
+	}
 	
 }

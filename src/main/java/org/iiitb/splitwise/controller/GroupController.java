@@ -38,8 +38,12 @@ public class GroupController {
 	}
 
 	@GetMapping("expenses/{id}")
-	public ResponseEntity<List<Expense>> groupExpenses(@PathVariable String id){
+	public ResponseEntity<List<Expense>> groupExpenses(@PathVariable String id) {
 		return ResponseEntity.ok(gs.groupExpenses(id));
 	}
 
+	@GetMapping("add/{username}/{grpId}")
+	public ResponseEntity<Group> addUserToGroup(@PathVariable String username, @PathVariable Integer grpId) {
+		return ResponseEntity.ok(gs.addUserToGroup(username, grpId));
+	}
 }
