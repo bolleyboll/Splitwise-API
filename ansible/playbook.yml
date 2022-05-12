@@ -10,6 +10,17 @@
     - name: Stop already running docker compose
       shell: docker-compose down
 
+    - name: Stop Running Containers
+      docker_container:
+        name: "{{ item }}"
+        state: stopped
+      loop: "{{ docker_info.containers | map(attribute='Id') | list }}"
+
+    - name: Remove Stopped Docker Containers
+      shell: |
+        docker rm $(docker ps -a -q);
+      when: docker_info.containers != 0
+      
     - name: Get all Docker Images
       docker_host_info:
         images: yes
