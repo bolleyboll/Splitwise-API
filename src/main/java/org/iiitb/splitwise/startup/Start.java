@@ -65,13 +65,13 @@ public class Start {
 
 		Group g0 = new Group();
 		g0.setGroupId(1);
-		g0.setName("Roommates - Bangalore");
+		g0.setName("Roommates-Bangalore");
 		g0.setMembers("bolleyboll, red, chief");
 		gr.save(g0);
 
 		Group g1 = new Group();
 		g1.setGroupId(2);
-		g1.setName("Google IO");
+		g1.setName("Google-IO");
 		g1.setMembers("bolleyboll, amang, chief");
 		gr.save(g1);
 
@@ -86,7 +86,7 @@ public class Start {
 		e0.setName("Samosa");
 		e0.setAmount(50.0);
 		e0.setForGroup("2");
-		e0.setSplitBetween("{'bolleyboll': '+50', 'amang': '-20', 'chief': '-20'}");
+		e0.setSplitBetween("bolleyboll: +50, amang: -20, chief: -20");
 		er.save(e0);
 
 		Expense e1 = new Expense();
@@ -94,7 +94,7 @@ public class Start {
 		e1.setName("Bus");
 		e1.setAmount(150.0);
 		e1.setForGroup("2");
-		e1.setSplitBetween("{'bolleyboll': '+150', 'amang': '-50', 'chief': '-50'}");
+		e1.setSplitBetween("bolleyboll: +150, amang: -50, chief: -50");
 		er.save(e1);
 
 		Expense e2 = new Expense();
@@ -102,7 +102,7 @@ public class Start {
 		e2.setName("Lunch");
 		e2.setAmount(2500.0);
 		e2.setForGroup("2");
-		e2.setSplitBetween("{'bolleyboll': '+2500', 'amang': '-1250'}");
+		e2.setSplitBetween("bolleyboll: +2500, amang: -1250");
 		er.save(e2);
 
 		Expense e3 = new Expense();
@@ -110,7 +110,7 @@ public class Start {
 		e3.setName("Cab");
 		e3.setAmount(150.0);
 		e3.setForGroup("2");
-		e3.setSplitBetween("{'amang': '+150', 'chief': '-100'}");
+		e3.setSplitBetween("amang: +150, chief: -100");
 		er.save(e3);
 
 		Expense e4 = new Expense();
@@ -118,7 +118,7 @@ public class Start {
 		e4.setName("Sandwich");
 		e4.setAmount(150.0);
 		e4.setForGroup("2");
-		e4.setSplitBetween("{'red': '-75', 'chief': '+150'}");
+		e4.setSplitBetween("red: -75, chief: +150");
 		er.save(e4);
 
 		System.out.println("Startup End");
