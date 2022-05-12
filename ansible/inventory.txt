@@ -1,0 +1,2 @@
+[UbServer]
+192.168.122.33 ansible_user=bolleyboll

@@ -1,3 +1,0 @@
-[localhost]
-127.0.0.1 ansible_user=patro 
-172.16.128.190 ansible_user=joru
