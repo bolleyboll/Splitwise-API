@@ -28,13 +28,17 @@ public class ExpenseServiceImpl implements ExpenseService {
 		Group g = gr.findByGroupId(grpId);
 		String members = g.getMembers();
 		String memL[] = members.split(", ");
-		int count = memL.length - 1;
+		int count = memL.length;
 		Double split = amt / count;
-		for (String member : memL) {
-			if (member.equalsIgnoreCase(paidBy)) {
+
+		for (int i = 0; i < memL.length; i++) {
+			if (memL[i].equalsIgnoreCase(paidBy)) {
 				continue;
 			} else {
-				f += member + ": -" + split.toString() + ", ";
+				f += memL[i] + ": -" + split.toString();
+			}
+			if (i != memL.length - 1) {
+				f += ", ";
 			}
 		}
 		expense.setSplitBetween(f);
