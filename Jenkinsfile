@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Git Pull') {
             steps {
-                git branch: 'main', credentialsId: 'git-credentials', url: 'https://github.com/bolleyboll/Splitwise-API.git'
+                git branch: 'main', credentialsId: 'cred-github', url: 'https://github.com/bolleyboll/Splitwise-API.git'
             }
         }
         stage('Maven Build') {
@@ -27,7 +27,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script{
-                    docker.withRegistry('', 'docker-jenkins'){
+                    docker.withRegistry('', 'cred-docker'){
                         imageName.push()
                     }
                 }
@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Ansible Pull Docker Image') {
             steps {
-                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.txt', playbook: 'ansible/playbook.yml', sudoUser: null
+                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/inventory.txt', playbook: 'ansible/playbook.yml', sudoUser: null
             }
         }
     }
