@@ -7,9 +7,6 @@
         src: docker-compose.yml
         dest: docker-compose.yml
 
-    - name: Stop already running docker compose
-      shell: docker-compose down
-
     - name: Get Running Containers
       docker_host_info:
         containers: yes
