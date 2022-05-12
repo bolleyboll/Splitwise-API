@@ -6,15 +6,18 @@
       copy:
         src: docker-compose.yml
         dest: docker-compose.yml
+
+    - name: Stop already running docker compose
+      shell: docker-compose down
+
     - name: Remove already existing image
       docker_image: 
         name: patro30/backend
         state: absent
-        force: yes
+
     - name: Pull updated image
       docker_image:
         name: patro30/backend
-    - name: Stop already running docker compose
-      shell: docker-compose down
+
     - name: Run docker compose
       shell: docker-compose up -d
