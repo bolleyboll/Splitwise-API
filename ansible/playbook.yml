@@ -20,7 +20,6 @@
       docker_image:
         name: "{{ item }}"
         state: absent
-        force: yes
       loop: "{{ image_info.images | map(attribute='Id') | list }}"
 
     - name: Pull updated image
