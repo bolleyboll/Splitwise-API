@@ -1,7 +1,7 @@
 ---
 - name: Deploy Splitwise app
   hosts: all
-  tasks: 
+  tasks:
     - name: Copy docker compose file to host
       copy:
         src: docker-compose.yml
@@ -10,10 +10,17 @@
     - name: Stop already running docker compose
       shell: docker-compose down
 
-    - name: Remove already existing image
-      docker_image: 
-        name: patro30/backend
+    - name: Get all Docker Images
+      docker_host_info:
+        images: yes
+        verbose_output: yes
+      register: image_info
+
+    - name: Remove all Docker Images
+      docker_image:
+        name: "{{ item }}"
         state: absent
+      loop: "{{ image_info.images | map(attribute='Id') | list }}"
 
     - name: Pull updated image
       docker_image:
