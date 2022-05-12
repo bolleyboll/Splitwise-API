@@ -41,6 +41,7 @@
     - name: Pull updated image
       docker_image:
         name: patro30/backend
+        source: pull
 
     - name: Run docker compose
       shell: docker-compose up -d
