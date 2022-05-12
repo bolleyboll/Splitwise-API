@@ -12,11 +12,11 @@ services:
   backend: 
     image: patro30/backend
     ports: 
-      - 8085:8085
+      - 8080:8080
     depends_on: 
       - db
     environment: 
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/splitwisedb
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3308/splitwisedb
       SPRING_DATASOURCE_USERNAME: bong
       SPRING_DATASOURCE_PASSWORD: password
     networks: 
@@ -24,13 +24,16 @@ services:
       - database
   db: 
     image: mysql:8.0
+    expose: 
+      - 3308
     ports: 
-      - 3306:3306
+      - 3308:3308
     environment: 
       MYSQL_DATABASE: splitwisedb
       MYSQL_USER: bong
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_TCP_PORT: 3308
     networks: 
       - database
     volumes: 
