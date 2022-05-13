@@ -1,2 +1,2 @@
 [UbServer]
-192.168.122.33 ansible_user=bolleyboll
+127.0.0.1 ansible_user=bolleyboll ansible_ssh_pass=vagrant
