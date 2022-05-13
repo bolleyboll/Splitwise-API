@@ -1,2 +1,2 @@
 # Splitwise-API
-Splitwise(Expense Tracker) Application for SPE Major Project
+Splitwise(Expense Tracker) Application for SPE Major-Project
