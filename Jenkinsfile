@@ -13,7 +13,7 @@ pipeline {
         stage('Maven Build') {
             steps {
                 script{
-                    sh 'mvn clean install package'
+                    sh 'mvn clean install'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Ansible Pull Docker Image') {
             steps {
-                ansiblePlaybook becomeUser: null, colorized: true, credentialsId: 'cred-ssh', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/inventory.txt', playbook: 'ansible/playbook.yml', sudoUser: null
+                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, credentialsId: 'cred-ssh',installation: 'Ansible', inventory: 'ansible/inventory.txt', playbook: 'ansible/playbook.yml', sudoUser: null
             }
         }
     }
